@@ -1,21 +1,38 @@
-MIT License
 
-Copyright (c) 2026 mudacang
+---
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+## 第二步：补充核心代码文件
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+**操作**：在仓库中创建以下目录和文件，并将你论文中对应的代码整理后上传。
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+### 1. 创建 `envs/` 目录
+
+上传你的温室仿真环境代码，建议至少包含：
+- `greenhouse_env.py`：栅格地图、状态空间、动作空间、奖励函数定义
+- `agv_model.py`：AGV运动模型、SOC管理、故障模型
+- `task_generator.py`：任务生成、优先级、动态任务规则
+
+### 2. 创建 `algorithms/` 目录
+
+上传三个核心模块的代码：
+- `mappo.py`：MAPPO训练主循环、Actor/Critic网络、PPO-Clip损失
+- `hungarian_allocator.py`：综合代价矩阵构建、匈牙利算法求解
+- `weighted_astar.py`：加权A*路径规划、风险系数计算
+
+### 3. 创建 `configs/` 目录
+
+上传仿真配置文件（YAML格式），每个场景一个文件。例如 `scenario_10x10.yaml`：
+
+```yaml
+grid_size: [10, 10]
+agv_num: 5
+task_num: 20
+obstacle_density: 0.15
+max_episode_steps: 500
+learning_rate_actor: 0.0001
+learning_rate_critic: 0.0003
+batch_size: 512
+gamma: 0.98
+entropy_coef: 0.02
+clip_param: 0.5
+total_episodes: 800
