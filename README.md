@@ -12,5 +12,7 @@ The proposed framework integrates:
 - Hungarian algorithm for global task allocation
 - Adaptive weighted A* for risk-aware path planning
 - MAPPO with centralized training and decentralized execution (CTDE)
+## Simulation Video
 
+[Download the simulation video (MP4)](./videos/ROS.mp4)
 ## Repository Structure
